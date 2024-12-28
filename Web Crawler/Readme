@@ -1,0 +1,13 @@
+STEPS FOR WEBCRAWLER:
+
+Import Necessary Libraries: We begin by importing the requests library for making HTTP requests, BeautifulSoup from bs4 for parsing the HTML content, and urljoin from urllib.parse to resolve relative URLs into absolute ones.
+
+Initialize Variables: The base URL of the website to start crawling is defined. We also create an empty set, visited_urls, to track the URLs that have already been crawled. Additionally, a list called urls_to_visit is initialized with the base URL to begin the crawling process.
+
+Define the Page Crawling Function: We write a function called crawl_page() that takes a URL, sends a request to fetch the page, and parses its HTML content. Inside the function, requests.get() retrieves the page, while BeautifulSoup processes the page's HTML. We extract all the links in <a> tags and use urljoin() to convert any relative URLs into absolute ones. These links are then added to a list of new URLs to visit.
+
+Crawl Pages Iteratively: The crawling process proceeds with a while loop that continues running as long as there are URLs in the urls_to_visit list. In each iteration, we dequeue the next URL, check whether it has already been visited, and if not, proceed to crawl it.
+
+Handle New Links: For each new page, we call the crawl_page() function to fetch the page and collect additional links. After that, the current URL is marked as visited by adding it to the visited_urls set. Any newly discovered URLs are appended to the urls_to_visit list for future crawling.
+
+Finish Crawling: Once all pages have been crawled and there are no more URLs to visit, the process concludes, and a message is printed to indicate that the crawling is complete.
